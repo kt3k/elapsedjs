@@ -15,7 +15,7 @@ window.elapsed = function (n) {
 
             return {
                 cancel: function () {
-                    clearTimeout(timer);
+                    window.clearTimeout(timer);
                 };
             };
         }
