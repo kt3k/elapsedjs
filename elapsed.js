@@ -1,7 +1,7 @@
 /**
  * elapsed.js 1.0.0
- * author: Yosiya Hinosawa (@kt3k)
- * license: MIT license
+ * author: Yosiya Hinosawa ( @kt3k )
+ * license: MIT license ( http://kt3k.mit-license.org/ )
  */
 
 window.elapsed = function (n) {
