@@ -46,7 +46,7 @@ elapsed300.then(function() {
 });
 ```
 
-### clearTimeout and cancel callback
+#### clearTimeout and cancel callback
 ```javascript
 var timer = elapsed(3000).then(function () {
     doIt();
