@@ -34,7 +34,7 @@ describe 'elapsed(msec).then(func)', ->
 
     spy = jasmine.createSpy()
 
-    elapsed(500).then ->
+    elapsed(100).then ->
 
       spy()
 
@@ -42,7 +42,7 @@ describe 'elapsed(msec).then(func)', ->
 
       expect(spy).not.toHaveBeenCalled()
 
-    , 499
+    , 99
 
     setTimeout ->
 
@@ -50,6 +50,6 @@ describe 'elapsed(msec).then(func)', ->
 
       done = true
 
-    , 501
+    , 101
 
     waitsFor -> done
