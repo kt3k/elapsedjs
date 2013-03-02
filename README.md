@@ -1,55 +1,40 @@
 elapsed.js
 ==========
 
-*elapsed.js* is a thin wrapper of `setTimeout` and aims to increase the readability of the code using `setTimeout`.
-
-source code
------------
-
-```
-window.elapsed = function (n) {
-    'use strict';
-    return {
-        then: function (func) {
-            var timer = window.setTimeout(func, n);
-
-            return {
-                cancel: function () {
-                    window.clearTimeout(timer);
-                }
-            };
-        }
-    };
-};
-```
+*elapsed.js* is a simple wrapper of `setTimeout` and aims readability improvement of `setTimeout`.
 
 usage
 -----
 
-#### one time use
+#### basic use
+
 ```javascript
 elapsed(500).then(function () {
-    doIt();
+    "do something";
 });
 ```
 
-#### reuse same elapsed object
+### nested use
+
 ```javascript
-var elapsed300 = elapsed(300);
+elapsed(500).then(function () {
+    "do something";
 
-elapsed300.then(function() {
-    doThis();
+    elapsed(300).then(function () {
+        "do other things";
 
-    elapsed300.then(function () {
-        doThat();
-    });
+        elapsed(400).then(function () {
+            "do other things";
+        });
+    })
 });
 ```
 
-#### clearTimeout and cancel callback
+#### cancel callback
+
 ```javascript
 var timer = elapsed(3000).then(function () {
-    doIt();
+    "do something";
 });
 
 $('#button').click(function () {
