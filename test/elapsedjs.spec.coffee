@@ -53,3 +53,31 @@ describe 'elapsed(msec).then(func)', ->
     , 101
 
     waitsFor -> done
+
+describe 'elapsed(msec).then(func).cancel', ->
+
+  it 'cancels func execution', ->
+
+    done = false
+
+    spy = jasmine.createSpy()
+
+    timer = elapsed(100).then ->
+
+      spy()
+
+    setTimeout ->
+
+      timer.cancel()
+
+    , 50
+
+    setTimeout ->
+
+      expect(spy).not.toHaveBeenCalled()
+
+      done = true
+
+    , 150
+
+    waitsFor -> done
